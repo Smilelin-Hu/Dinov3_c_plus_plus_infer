@@ -1,0 +1,42 @@
+# Build outputs
+/build/
+/CMakeFiles/
+/CMakeCache.txt
+/Makefile
+/cmake_install.cmake
+compile_commands.json
+
+# CMake / compiler generated files
+*.o
+*.obj
+*.a
+*.so
+*.so.*
+*.out
+*.log
+
+# CUDA generated files
+*.cubin
+*.fatbin
+*.ptx
+*.ii
+*.module_id
+*.gpu
+*.stub.c
+
+# Binaries and local runtime artifacts
+/main
+/*.engine
+/weights.bin
+/*.jpg
+/*.jpeg
+/*.png
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
