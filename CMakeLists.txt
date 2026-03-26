@@ -5,10 +5,10 @@ set(CMAKE_CUDA_ARCHITECTURES 75 80 86)
 # 在文件开头附近添加（project 命令之后 忽略警告）
 cmake_policy(SET CMP0074 NEW)
 
-
 # 设置CUDA路径
 set(CUDA_ROOT "/usr/local/cuda-12.8")
 set(CUDART_LIB "${CUDA_ROOT}/lib64/libcudart.so")
+set(CUBLAS_LIB "${CUDA_ROOT}/lib64/libcublas.so")
 
 # 设置TensorRT路径
 set(TensorRT_ROOT "/home/ps/train/HJL/TensorRT-10.15.1.29")
@@ -51,7 +51,7 @@ set(MAIN_SOURCES
 enable_language(CUDA)
 
 # 设置CUDA编译器标志（重要）
-set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-std=c++14 -O3)
+set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-std=c++14 -O3 -DANOMALY_CORE_DEBUG_VALIDATE=1)
 
 # 包含所有头文件路径
 include_directories(
@@ -75,9 +75,9 @@ target_link_libraries(main
     ${NVINFER_LIB}
     ${NVONNXPARSER_LIB}
     ${CUDART_LIB}
+    ${CUBLAS_LIB}
     ${CUDA_LIBRARIES}
-    #cublas       # 修复：undefined reference to `cublasDestroy_v2`
-    cudart       # CUDA 运行时库
+    cudart
 )
 
 # 设置 RPATH
