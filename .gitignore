@@ -40,3 +40,8 @@ compile_commands.json
 
 # OS files
 .DS_Store
+
+
+# cache                                                                                                                                                                                                                           
+.cache/                                                                                                                                                                                                                    
+.claude/ 
